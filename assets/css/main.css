@@ -1,0 +1,273 @@
+/*
+* @Author: Sebastian B. Mohr
+* @Date:   2020-08-21 14:26:50
+* @Last Modified by:   sebastian
+* @Last Modified time: 2021-04-08 12:28:01
+*/
+
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+body {
+  font-family: 'Work Sans', sans-serif;
+}
+
+
+a:hover {
+  color: #094277;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Work Sans', sans-serif;
+}
+
+.center{
+	text-align: center;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.no-gutters{
+	margin:0px;
+}
+
+/*--------------------------------------------------------------
+# Navigator
+--------------------------------------------------------------*/
+.nav-link {
+	font-size: 1em;
+	color: #094277;
+}
+
+.active .nav-link{
+	color: #094277 !important;
+}
+
+a.navbar-brand{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+
+
+.interactive_form .form-range{
+	width: 79%;
+	padding-right: 2%;
+}
+
+.interactive_form .form-number{
+	width: 20%;
+}
+
+.interactive_form .form-label{
+	width: 100%;
+}
+.interactive-form .form-inputs{
+	justify-content: center;
+}
+
+.row-form-main{
+	margin:0;
+	padding: 0;
+}
+
+input[type="range"]::-ms-thumb{
+	background: #006fb9;
+}
+
+input[type="range"]::-moz-range-thumb{
+	background: #006fb9;
+}
+
+
+input[type="range"]::-webkit-slider-thumb{
+	background: #006fb9;
+}
+
+
+
+.form-num{
+	text-align: right;
+}
+
+.form-num input{
+	width:40% !important;
+	right
+}
+/*--------------------------------------------------------------
+# Card
+--------------------------------------------------------------*/
+
+.card-header{
+	justify-content: space-between;
+  font-weight: 600;
+}
+
+#advanced-checkbox{
+	position: absolute;
+	display: inline;
+	right: 0;
+	color: #446493;
+}
+
+#advanced-checkbox input{
+  width: 13px;
+  height: 13px;
+  transform: scale(1.2);
+  padding: 0;
+  margin:0;
+  margin-right: 8px;
+  margin-left: 6px; 
+  vertical-align: middle;
+  position: relative;
+}
+
+.card{
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+
+.advanced_mode{
+	display: none;
+}
+
+
+
+/*--------------------------------------------------------------
+# Loading
+--------------------------------------------------------------*/
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  z-index: 1000;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#loading {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	opacity: 0.85;
+	background-color: gray;
+	box-shadow: 10px 10px black;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.btn-primary{
+	background: #006fb9;
+}
+
+/*--------------------------------------------------------------
+# Tooltips descriptions
+--------------------------------------------------------------*/
+.fa-question-circle{
+  cursor: help;
+}
+.tooltip {
+  font-family: "Source Serif Pro", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+  /* ... */
+}
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  background-color: #000;
+  border-radius: 4px;
+}
+
+.modal-backdrop+.modal-backdrop {
+  opacity : 0;
+}
+
+
+/*--------------------------------------------------------------
+# Charts (modulation parameter)
+--------------------------------------------------------------*/
+.modulation-param-chart{
+  height: 300px;
+  margin: 8px;
+}
+.modulation-param-buttons{
+  display: flex;
+  text-align: center;
+  justify-content: left;
+  margin: 8px;
+}
+.btn-secondary{
+  margin-left: 10px;
+  margin-right: 10px;
+}
