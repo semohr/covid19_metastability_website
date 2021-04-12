@@ -78,7 +78,7 @@ SV Model::dgl(double t, SV current){
 
 	//S compartment
 	next[0] =
-		-gamma*k(t)*R_0*S/M*I_H   -					//hidden contagion
+		-gamma*(1.0-k(t))*R_0*S/M*I_H   -					//hidden contagion
 		gamma*(nu+epsilon)*R_0*S/M*I_Q   	- 				//traced contagion
 		Phi(t)*S/M;												//external influx
 
@@ -90,7 +90,7 @@ SV Model::dgl(double t, SV current){
 
 	//E_H compartment
 	next[2] = 
-		gamma*S/M*(k(t)*R_0*I_H+epsilon*I_Q*R_0) -	//hidden contagion
+		gamma*S/M*((1.0-k(t))*R_0*I_H+epsilon*I_Q*R_0) -	//hidden contagion
 		chi_tau()*N_traced(t)					   -	//contact tracing
 		rho*E_H;
 														

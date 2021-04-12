@@ -378,11 +378,11 @@ var initials = {
 var spezial = {
   "k_t" : {
     "id" : "k_t",
-    "name": "Contact reduction",
+    "name": "Intensity of contagious contacts",
     "math": "k<sub>t</sub>",
     "min": 0.0,
     "max": 1.0,
-    "value": 0.8,
+    "value": 0.2,
     "description": "TODO",
     "change_points": 0,
     "peak" : 0,
@@ -742,7 +742,7 @@ function _setup_modulation_parameter(main_div, parameters){
     var button_influx = document.createElement("button");
 
     set_classes(button_cp,"Add change point")
-    set_classes(button_influx,"Add inputevent")
+    set_classes(button_influx,"Add peak")
     button_cp.addEventListener("click",function(e){on_click_cp(e,parameter)}.bind(parameter))
     button_influx.addEventListener("click",function(e){on_click_inf(e,parameter)}.bind(parameter))
 
