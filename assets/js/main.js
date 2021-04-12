@@ -298,7 +298,7 @@ var parameters = {
     "math": "&phi;",
     "min": 0.0,
     "max": 1.0,
-    "value": "0.4",
+    "value": 0.4,
     "description": "TODO"
   },
   "R_0" : {
@@ -319,7 +319,8 @@ var initials = {
     "math": "E<sup>Q</sup>",
     "min": 0.0,
     "max": 500,
-    "value": 10,
+    "value": 100,
+    "step" : 1,
     "description": "TODO"
   },
   "E_H" : {
@@ -328,7 +329,8 @@ var initials = {
     "math": "E<sup>H</sup>",
     "min": 0.0,
     "max": 500,
-    "value": 10,
+    "value": 100,
+    "step" : 1,
     "description": "TODO"
   },
   "I_Hs" : {
@@ -337,7 +339,8 @@ var initials = {
     "math": "I<sup>H,s</sup>",
     "min": 0.0,
     "max": 500,
-    "value": 10,
+    "value": 68,
+    "step" : 1,
     "description": "TODO"
   },
   "I_H" : {
@@ -346,7 +349,8 @@ var initials = {
     "math": "I<sup>H</sup>",
     "min": 0.0,
     "max": 500,
-    "value": 10,
+    "value": 100,
+    "step" : 1,
     "description": "TODO"
   },
   "I_Q" : {
@@ -355,7 +359,8 @@ var initials = {
     "math": "I<sup>Q</sup>",
     "min": 0.0,
     "max": 500,
-    "value": 10,
+    "value": 100,
+    "step" : 1,
     "description": "TODO"
   },  
   "R" : {
@@ -364,7 +369,8 @@ var initials = {
     "math": "R",
     "min": 0.0,
     "max": 500,
-    "value": 10,
+    "value": 0,
+    "step" : 1,
     "description": "TODO"
   },  
 }
@@ -387,7 +393,7 @@ var spezial = {
     "math": "&phiv;<sub>t</sub>",
     "min": 0.0,
     "max": 10.0,
-    "value": 0.1,
+    "value": 1.,
     "description": "TODO",
     "change_points": 0,
     "inputevents" : 0,
@@ -433,7 +439,13 @@ function _add_sliders_to_div(main_div, parameter){
   inner_slider_range.type = "range"
   inner_slider_range.min = parameter["min"]
   inner_slider_range.max = parameter["max"]
-  inner_slider_range.step = 0.001
+  if ("step" in parameter){
+    inner_slider_range.step = parameter["step"]
+  }
+  else{
+    inner_slider_range.step = 0.001
+  }
+  
   inner_slider_range.value = parameter["value"]
 
 
@@ -443,7 +455,12 @@ function _add_sliders_to_div(main_div, parameter){
   inner_slider_number.type = "number"
   inner_slider_number.min = parameter["min"]
   inner_slider_number.max = parameter["max"]
-  inner_slider_number.step = 0.001
+  if ("step" in parameter){
+    inner_slider_range.step = parameter["step"]
+  }
+  else{
+    inner_slider_range.step = 0.001
+  }
   inner_slider_number.value = parameter["value"]
 
   //Event to update global dicts
