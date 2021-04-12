@@ -385,7 +385,7 @@ var spezial = {
     "value": 0.8,
     "description": "TODO",
     "change_points": 0,
-    "inputevents" : 0,
+    "peak" : 0,
   },
   "Phi_t" : {
     "id" : "Phi_t",
@@ -396,7 +396,7 @@ var spezial = {
     "value": 1.,
     "description": "TODO",
     "change_points": 0,
-    "inputevents" : 0,
+    "peak" : 0,
   }
 }
 
@@ -646,8 +646,8 @@ function _setup_modulation_parameter(main_div, parameters){
     //Create an inputevent
     parameter["cpp"].add_inputevent(12.5,0.0,0.5);
 
-    //Count number of inputevents
-    parameter["inputevents"] ++;
+    //Count number of peak
+    parameter["peak"] ++;
 
     let series = chart.addSeries({
         stickyTracking: false,
@@ -667,7 +667,7 @@ function _setup_modulation_parameter(main_div, parameters){
             x: 9.5,
             y: 0.5,            
         }],
-        name: "Inputevent "+String(parameter["inputevents"]),
+        name: "Peak "+String(parameter["peak"]),
         lineWidth: 0,
         states: {
           hover: {
