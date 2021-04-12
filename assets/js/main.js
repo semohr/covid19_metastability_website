@@ -151,7 +151,7 @@ function save_data(model,dat){
         data: Repro_number,
       },
       {
-        name: "Effective reproduction number",
+        name: "Observed reproduction number",
         dashStyle: 'Line',
         data: Repro_number_eff,      
       },        
