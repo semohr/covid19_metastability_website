@@ -39,6 +39,10 @@ function model_run(){
   for (key in parameters) {
     params[key] = parseFloat(parameters[key]["value"])
   }
+  for (key in main_parameters) {
+    if (key == R) continue;
+    params[key] = parseFloat(main_parameters[key]["value"])
+  }
   for (key in spezial){
     params[key] = spezial[key]["cpp"]
   }
@@ -51,6 +55,10 @@ function model_run(){
   for (key in initials) {
     init[key] = parseFloat(initials[key]["value"])
   }
+
+  //
+  init["R"] =  parseFloat(main_parameters["R"]["value"]*1e6*100)
+
   //Always 1e6 Susceptible
   init["S"] = 1e6- init["E_Q"] - init["E_H"] - init["I_Q"] - init["I_H"];
   //Run solver
@@ -114,9 +122,9 @@ function save_data(model,dat){
     New_cases.push([time[i],dat.N()[i]]);
     New_cases_obs.push([time[i],dat.N_obs()[i]]);
 
-    //reproduction number
-    Repro_number.push([time[i],model.k_t.eval(time[i])*model.R_0]);
+    //reproduction numbers
     if (i>=4) {
+      Repro_number.push([time[i],dat.N()[i]/dat.N()[i-4]]);
       Repro_number_eff.push([time[i],dat.N_obs()[i]/dat.N_obs()[i-4]])
     }
   
@@ -183,6 +191,64 @@ function save_data(model,dat){
   }
 }
 
+var main_parameters = {
+  "lambda_r" : {
+    "id" : "lambda_r",
+    "name": "Random-testing rate",
+    "math": "&lambda;<sub>r</sub>",
+    "min": 0.00,
+    "max": 0.20,
+    "value": 0.0,
+    "description": "TODO"
+  },
+  "lambda_s" : {
+    "id" : "lambda_s",
+    "name": "Symptom-driven testing rate",
+    "math": "&lambda;<sub>s</sub>",
+    "min": 0.00,
+    "max": 1.00,
+    "value": 0.25,
+    "description": "TODO"
+  },
+  "eta" : {
+    "id" : "eta",
+    "name": "Tracing efficiency",
+    "math": "&eta;",
+    "min": 0.01,
+    "max": 1.00,
+    "value": 0.66,
+    "description": "TODO"
+  },
+  "N_test_max" : {
+    "id" : "N_test_max",
+    "name": "Maximal tracing capacity",
+    "math": "N<sub>test,max</sub>",
+    "min": 0.0,
+    "max": 100.0,
+    "value": 50,
+    "description": "TODO"
+  },
+  "R_0" : {
+    "id" : "R_0",
+    "name": "Basic reproduction number",
+    "math": "R<sub>0</sub>",
+    "min": 0.0,
+    "max": 6.0,
+    "value": 3.3,
+    "description": "TODO"
+  },
+  "R" : {
+    "id" : "R",
+    "name": "Recovered pool (fraction of immune population)",
+    "math": "R",
+    "min": 0.0,
+    "max": 1.0,
+    "value": 0,
+    "step" : 0.01,
+    "description": "TODO"
+  },
+}
+
 var parameters = {
   "gamma" : {
     "id" : "gamma",
@@ -211,15 +277,6 @@ var parameters = {
     "value": 0.075,
     "description": "TODO"
   },
-  "lambda_r" : {
-    "id" : "lambda_r",
-    "name": "Random-testing rate",
-    "math": "&lambda;<sub>r</sub>",
-    "min": 0.00,
-    "max": 0.20,
-    "value": 0.0,
-    "description": "TODO"
-  },
   "lambda_r_prime" : {
     "id" : "lambda_r_prime",
     "name": "Random-testing rate (reducedcapacity)",
@@ -229,15 +286,6 @@ var parameters = {
     "value": 0.0,
     "description": "TODO"
   },
-  "lambda_s" : {
-    "id" : "lambda_s",
-    "name": "Symptom-driven testing rate",
-    "math": "&lambda;<sub>s</sub>",
-    "min": 0.00,
-    "max": 1.00,
-    "value": 0.25,
-    "description": "TODO"
-  },  
   "lambda_s_prime" : {
     "id" : "lambda_s_prime",
     "name": "Symptom-driven testing rate (reducedcapacity)",
@@ -247,15 +295,6 @@ var parameters = {
     "value": 0.1,
     "description": "TODO"
   },
-  "eta" : {
-    "id" : "eta",
-    "name": "Tracing efficiency",
-    "math": "&eta;",
-    "min": 0.01,
-    "max": 1.00,
-    "value": 0.66,
-    "description": "TODO"
-  },
   "tau" : {
     "id" : "tau",
     "name": "Contact tracing delay",
@@ -263,15 +302,6 @@ var parameters = {
     "min": 0.0,
     "max": 5.0,
     "value": 2,
-    "description": "TODO"
-  },
-  "N_test_max" : {
-    "id" : "N_test_max",
-    "name": "Maximal tracing capacity",
-    "math": "N<sub>test,max</sub>",
-    "min": 0.0,
-    "max": 100.0,
-    "value": 50,
     "description": "TODO"
   },
   "epsilon" : {
@@ -299,15 +329,6 @@ var parameters = {
     "min": 0.0,
     "max": 1.0,
     "value": 0.4,
-    "description": "TODO"
-  },
-  "R_0" : {
-    "id" : "R_0",
-    "name": "Basic reproduction number",
-    "math": "R<sub>0</sub>",
-    "min": 0.0,
-    "max": 6.0,
-    "value": 3.3,
     "description": "TODO"
   },
 }
@@ -360,16 +381,6 @@ var initials = {
     "min": 0.0,
     "max": 500,
     "value": 100,
-    "step" : 1,
-    "description": "TODO"
-  },  
-  "R" : {
-    "id" : "R",
-    "name": "Recovered pool",
-    "math": "R",
-    "min": 0.0,
-    "max": 500,
-    "value": 0,
     "step" : 1,
     "description": "TODO"
   },  
@@ -768,8 +779,6 @@ function _setup_modulation_parameter(main_div, parameters){
 
 
 function old(){
-
-
   var parameter_div = document.createElement("div");
 
   //Add initial button(s) to parameter div
@@ -896,10 +905,25 @@ function setup_parameter_sliders(){
     return;
   }  
 
+  // Main model parameters
+  // Hard defined parameters
+  var main_div = document.getElementById("main_parameters");
+  let count = 1;
+  for (key in main_parameters) {
+    _add_sliders_to_div(main_div, main_parameters[key])
+    
+    if (count != Object.keys(main_parameters).length){
+      main_div.appendChild(document.createElement("hr"))
+    }
+    count++;
+  }
+  set_sliders_to_dict(main_div,"main_parameters");
+
+
   //Model parameters
   var main_div = document.getElementById("parameters");
 
-  let count = 1;
+  count = 1;
   for (key in parameters) {
     _add_sliders_to_div(main_div, parameters[key])
 
@@ -909,6 +933,7 @@ function setup_parameter_sliders(){
     count++;
   }
   set_sliders_to_dict(main_div,"parameters");
+
 
   //Initial values
   count = 1;
@@ -1109,10 +1134,6 @@ function setup_highcharts(){
       ],
     }
   }
-
-
-
-
 
 
   var main_div = document.getElementById("hs-container");

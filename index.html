@@ -34,10 +34,9 @@
   <header id="header">
     <nav class="navbar navbar-expand navbar-light bg-light">
       <a class="navbar-brand" href="/">
-        <img src="assets/img/logo.png" alt="logo" width="50" height="50">
+        <img src="assets/img/Logo.png" alt="logo" height="50" width="100">
+        <a class="nav-link" href="/"><b><h2>COVID-19 Metastability</h2></b></a>
       </a>
-      <ul class="navbar-nav">
-        <li class="nav-item active"><a class="nav-link" href="/"><b>COVID-19 Metastability</b></a></li>
       </ul>
      </nav>
     </div>
@@ -71,37 +70,19 @@
         	<div class="card">
             <div class="card-header">
               Model parameters
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#parameters_collapse" aria-expanded="false" aria-controls="parameters_collapse" style="float: right;">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#main_parameters_collapse" aria-expanded="false" aria-controls="main_parameters_collapse" style="float: right;">
    								Open/Close
   							</button>
             </div>
-            <div id="parameters_collapse" class="collapse">
+            <div id="main_parameters_collapse" class="collapse">
               <div class="card-body" >
-                Model parameters as described in our publication, short descriptions of the parameters can be accessed by hovering over the question-mark icon.
+                Main model parameters as described in our publication, short descriptions of the parameters can be accessed by hovering over the question-mark icon.
                 <hr>
               </div>
-              <div id="parameters" class="card-body interactive_form">
+              <div id="main_parameters" class="card-body interactive_form">
               </div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-header">
-              Model initials
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#initials_collapse" aria-expanded="false" aria-controls="initials_collapse" style="float: right;">
-   								Open/Close
-  							</button>
-            </div>
-            <div id="initials_collapse" class="collapse">
-              <div class="card-body" >
-                Values for the different compartments at the beginning of the simulation.
-                <hr>
-              </div>
-              <div id="initials" class="card-body interactive_form">
-              </div>
-            </div>
-          </div>
-
           <div class="card">
             <div class="card-header">
               Modulation intensity of contagious contacts and external influx
@@ -115,6 +96,40 @@
                 <hr>
               </div>
               <div id="contact" class="card-body interactive_form" >
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="display: none;">
+            <div class="card-header">
+              Advanced model parameters
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#parameters_collapse" aria-expanded="false" aria-controls="parameters_collapse" style="float: right;">
+                  Open/Close
+                </button>
+            </div>
+            <div id="parameters_collapse" class="collapse">
+              <div class="card-body" >
+                Model parameters as described in our publication, short descriptions of the parameters can be accessed by hovering over the question-mark icon.
+                <hr>
+              </div>
+              <div id="parameters" class="card-body interactive_form">
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="display: none;">
+            <div class="card-header">
+              Model initials
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#initials_collapse" aria-expanded="false" aria-controls="initials_collapse" style="float: right;">
+   								Open/Close
+  							</button>
+            </div>
+            <div id="initials_collapse" class="collapse">
+              <div class="card-body" >
+                Values for the different compartments at the beginning of the simulation.
+                <hr>
+              </div>
+              <div id="initials" class="card-body interactive_form">
               </div>
             </div>
           </div>
