@@ -1012,6 +1012,7 @@ function _add_highchart_to_div(main_div,chart_params){
       }
     },
     tooltip: {
+      headerFormat: 'Day {point.key}<br/>',
       pointFormat: '{series.name}: <b>{point.y:.2f}</b><br/>',
       shared: true
     },
