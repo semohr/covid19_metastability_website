@@ -199,7 +199,7 @@ var main_parameters = {
     "min": 0.00,
     "max": 0.20,
     "value": 0.0,
-    "description": "TODO"
+    "description": "Fraction of the population randomly tested per day."
   },
   "lambda_s" : {
     "id" : "lambda_s",
@@ -208,7 +208,7 @@ var main_parameters = {
     "min": 0.00,
     "max": 1.00,
     "value": 0.25,
-    "description": "TODO"
+    "description": "Fraction of the symptomatic population tested per day."
   },
   "eta" : {
     "id" : "eta",
@@ -217,7 +217,7 @@ var main_parameters = {
     "min": 0.01,
     "max": 1.00,
     "value": 0.66,
-    "description": "TODO"
+    "description": "Fractions of infection chains that are fully traced."
   },
   "N_test_max" : {
     "id" : "N_test_max",
@@ -226,7 +226,7 @@ var main_parameters = {
     "min": 0.0,
     "max": 100.0,
     "value": 50,
-    "description": "TODO"
+    "description": "The maximum amount of new cases whose close contacts can be timely found by Health Authorities. If case numbers cross the maximal tracing capacity, TTI efficiency is reduced."
   },
   "R_0" : {
     "id" : "R_0",
@@ -235,7 +235,7 @@ var main_parameters = {
     "min": 0.0,
     "max": 6.0,
     "value": 3.3,
-    "description": "TODO"
+    "description": " The basic reproduction number accounts for the number of offspring infections a single case can produce in a fully susceptible and naïve population. It is a property of each infection, and does not change unless the infection does (e.g., in the case of emerging variants)."
   },
   "R" : {
     "id" : "R",
@@ -245,7 +245,7 @@ var main_parameters = {
     "max": 1.0,
     "value": 0,
     "step" : 0.01,
-    "description": "TODO"
+    "description": " Individuals that have acquired immunity against SARS-CoV-2 infection, due to vaccination or to recovery from disease."
   },
 }
 
@@ -394,7 +394,7 @@ var spezial = {
     "min": 0.0,
     "max": 1.0,
     "value": 0.2,
-    "description": "TODO",
+    "description": "Modulation parameter for defining the potentially changing contact behaviour of the population.",
     "change_points": 0,
     "peak" : 0,
   },
@@ -405,7 +405,7 @@ var spezial = {
     "min": 0.0,
     "max": 10.0,
     "value": 1.,
-    "description": "TODO",
+    "description": "Number of new infections added by external influx.",
     "change_points": 0,
     "peak" : 0,
   }
