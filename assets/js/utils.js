@@ -92,14 +92,16 @@ function exportToCsv(filename, rows) {
 }
 
 /*Enable tooltips*/
-window.addEventListener("load", setup_tooltips);
 function setup_tooltips(){
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
   })  
 }
-
+function delayed_setup_tooltips(){
+  setTimeout(setup_tooltips,4000);
+}
+window.addEventListener("load", delayed_setup_tooltips);
 
 /**
 * returns an array with moving average of the input array

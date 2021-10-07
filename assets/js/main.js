@@ -531,7 +531,10 @@ function _setup_modulation_parameter(main_div, parameters){
         },
     },
     tooltip: {
-        valueDecimals: 2
+      headerFormat: 'Day {point.key}<br/>',
+      pointFormat: '{series.name}: <b>{point.y:.2f}</b><br/>',
+      shared: true,
+      valueDecimals: 2,
     },
 
     series:[
@@ -542,6 +545,7 @@ function _setup_modulation_parameter(main_div, parameters){
         marker: {
           enabled: false
         },
+        name: parameter["math"],
         data: data_ar,
         lineWidth:3,
       }],
@@ -1014,7 +1018,8 @@ function _add_highchart_to_div(main_div,chart_params){
     tooltip: {
       headerFormat: 'Day {point.key}<br/>',
       pointFormat: '{series.name}: <b>{point.y:.2f}</b><br/>',
-      shared: true
+      shared: true,
+      valueDecimals: 2,
     },
     legend:{
       symbolWidth: 40
